@@ -2,7 +2,7 @@
 #when child class dont have constructor, In this case parent class constructor behaves like child class constructor
 #with implementation in child class
 #parent class
-class Person:
+'''class Person:
     def __init__(self,name,age):
         self.name=name
         self.age=age
@@ -14,12 +14,12 @@ class Student(Person):
 
 s=Student("ravi",20)
 print(s.name)
-print(s.details())
+print(s.details())'''
 
 
 
 # parent class
-class person:
+'''class person:
     def __init__(self,name,age,gender):
         self.name = name
         self.age = age
@@ -37,13 +37,13 @@ s = student(101,"ravi",20)
 print(s.name)
 print(p.details())
 s.gender = "male" # Adding new instancs attribute
-print(s.details())
+print(s.details())'''
 
 
 
 # Inherete the parent class constructor in child class by using super()
 # parent class
-class person:
+'''class person:
     def __init__(self,name,age,gender):
         self.name = name
         self.age = age
@@ -60,11 +60,11 @@ class student(person):
 s = student(101,"ravi",20,"male")
 print(s.name)
 print(s.details())
-print(s.percentage([90,89,88]))
+print(s.percentage([90,89,88]))'''
 
 # Multilevel Inheritance
 
-class Employee:
+'''class Employee:
     company = "Blitzz"
 
     def __init__(self, id, name, salary):
@@ -103,10 +103,10 @@ print(e.calculate_salary())
 print(t.calculate_salary(5000))
 print(t.project_status(90))
 print(m.calculate_salary(10000))
-print(m.project_status(80))
+print(m.project_status(80))'''
 
 #multiple inheritance
-class Father:
+'''class Father:
     def __init__(self,father_name):
         self.father_name=father_name
     def working1(self):
@@ -128,8 +128,89 @@ c=child("srinu","satya","mahi")
 print(c.father_name)
 print(c.mother_name)
 print(child.__mro__)#Method resolution order
-print(c.working())
+print(c.working())'''
 
 
+#Hybrid Inheritance
+'''class person:
+    def __init__(self, name):
+        self.name = name
+
+    def details(self):
+        return f"Name: {self.name}"
+
+
+class student(person):
+    def __init__(self, name, stdid):
+        person.__init__(self, name)
+        self.stdid = stdid
+
+    def study(self):
+        return "Studying"
+
+
+class employee(person):
+    def __init__(self, name, empid):
+        person.__init__(self, name)
+        self.empid = empid
+
+    def work(self):
+        return "Working"
+
+
+class intern(student, employee):
+    def __init__(self, name, stdid, empid):
+        student.__init__(self, name, stdid)
+        employee.__init__(self, name, empid)
+
+    def info(self):
+        print(self.details())
+        print(self.study())
+        print(self.work())
+
+
+i = intern("UK", 102, 202)
+
+print(i.stdid)
+print(i.empid)
+i.info()'''
+
+
+#hierarchical inheritance
+class person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    def details(self):
+        return f"Name: {self.name}, Age: {self.age}"
+
+
+class student(person):
+    def __init__(self, name, age, stdid):
+        self.stdid = stdid
+        super().__init__(name, age)
+
+    def study(self):
+        return "Studying Python"
+
+
+class employee(person):
+    def __init__(self, name, age, empid):
+        self.empid = empid
+        super().__init__(name, age)
+
+    def work(self):
+        return "Working in Google"
+
+
+s = student("MSD", 21, 101)
+e = employee("THALA", 25, 201)
+
+print(s.details())
+print(s.study())
+
+print(e.details())
+print(e.work())
 
             
