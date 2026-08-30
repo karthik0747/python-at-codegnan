@@ -1,0 +1,12 @@
+# Public Holidays - office is closed on these dates
+# Format: YYYY-MM-DD|Holiday Name
+# Add or remove lines here to update the holiday calendar - no code changes needed.
+2026-01-26|Republic Day
+2026-03-04|Holi
+2026-04-14|Ambedkar Jayanti
+2026-05-01|May Day
+2026-08-15|Independence Day
+2026-10-02|Gandhi Jayanti
+2026-10-20|Dussehra
+2026-11-08|Diwali
+2026-12-25|Christmas
