@@ -80,85 +80,66 @@ def get_movie(movie_id):
 @app.route('/movies/director=<string:director_name>')
 def movie_director(director_name):
     result = []
-
     for movie in movies.values():
-        if movie["director"].lower() == director_name.lower():
+        if director_name.lower() in movie["director"].lower():
             result.append(movie)
-
     if result:
         return result
-
     return "No movies found"
 
 
 @app.route('/movies/rating=<int:rating_no>')
 def movie_rating(rating_no):
     result = []
-
     for movie in movies.values():
         if movie["rating"] == rating_no:
             result.append(movie)
-
     if result:
         return result
-
     return "No movies found"
 
 
 @app.route('/movies/language=<string:language>')
 def movie_language(language):
     result = []
-
     for movie in movies.values():
         if movie["language"].lower() == language.lower():
             result.append(movie)
-
     if result:
         return result
-
     return "No movies found"
 
 
 @app.route('/movies/genre=<string:genre>')
 def movies_genre(genre):
     result = []
-
     for movie in movies.values():
         if movie["genre"].lower() == genre.lower():
             result.append(movie)
-
     if result:
         return result
-
     return "No movies found"
 
 
 @app.route('/movies/year=<int:year>')
 def movies_year(year):
     result = []
-
     for movie in movies.values():
         if movie["year"] == year:
             result.append(movie)
-
     if result:
         return result
-
     return "No movies found for this year"
 
 
 @app.route('/movies/language=<string:language>/genre=<string:genre>')
 def language_genre(language, genre):
     result = []
-
     for movie in movies.values():
-        if (movie["language"].lower() == language.lower()
-                and movie["genre"].lower() == genre.lower()):
+        if ( language.lower() in movie["language"].lower() and  genre.lower() in movie["genre"].lower()):
             result.append(movie)
-
     if result:
         return result
-
     return "No movies found"
 
 
