@@ -58,6 +58,7 @@ movies = {
     }
 }
 
+
 @app.route('/')
 def home():
     return "Welcome to Movie Finder"
@@ -68,86 +69,98 @@ def all_movies():
     return movies
 
 
-
 @app.route('/movies/id=<string:movie_id>')
 def get_movie(movie_id):
     if movie_id in movies:
         return movies[movie_id]
+
     return "Movie not found"
 
 
 @app.route('/movies/director=<string:director_name>')
 def movie_director(director_name):
     result = []
+
     for movie in movies.values():
         if movie["director"].lower() == director_name.lower():
             result.append(movie)
+
     if result:
         return result
+
     return "No movies found"
 
 
 @app.route('/movies/rating=<int:rating_no>')
 def movie_rating(rating_no):
-    result = {}
-    for movie_id, movie in movies.items():
+    result = []
+
+    for movie in movies.values():
         if movie["rating"] == rating_no:
-            result[movie_id] = movie
+            result.append(movie)
+
     if result:
         return result
-    return "No movies found"
 
+    return "No movies found"
 
 
 @app.route('/movies/language=<string:language>')
 def movie_language(language):
-    result = {}
-    for movie_id, movie in movies.items():
+    result = []
+
+    for movie in movies.values():
         if movie["language"].lower() == language.lower():
-            result[movie_id] = movie
+            result.append(movie)
+
     if result:
         return result
+
     return "No movies found"
-
-
 
 
 @app.route('/movies/genre=<string:genre>')
 def movies_genre(genre):
-    result = {}
-    for movie_id, movie in movies.items():
+    result = []
+
+    for movie in movies.values():
         if movie["genre"].lower() == genre.lower():
-            result[movie_id] = movie
+            result.append(movie)
+
     if result:
         return result
+
     return "No movies found"
-
-
 
 
 @app.route('/movies/year=<int:year>')
 def movies_year(year):
-    result = {}
-    for movie_id, movie in movies.items():
+    result = []
+
+    for movie in movies.values():
         if movie["year"] == year:
-            result[movie_id] = movie
+            result.append(movie)
+
     if result:
         return result
-    return "No movies found for this year"
 
+    return "No movies found for this year"
 
 
 @app.route('/movies/language=<string:language>/genre=<string:genre>')
 def language_genre(language, genre):
-    result = {}
-    for movie_id, movie in movies.items():
-        if (movie["language"].lower() == language.lower() and movie["genre"].lower() == genre.lower()): 
-            result[movie_id] = movie
+    result = []
+
+    for movie in movies.values():
+        if (movie["language"].lower() == language.lower()
+                and movie["genre"].lower() == genre.lower()):
+            result.append(movie)
+
     if result:
         return result
+
     return "No movies found"
 
 
-
 if __name__ == '__main__':
-    app.run(debug=True)      
+    app.run(debug=True)
